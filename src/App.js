@@ -31,7 +31,7 @@ function LoadUsers() {
   )
 }
 
-function User(props) {
+function User(porps) {
   const myStyle2 = {
     backgroundColor: 'rgb(2 49 60)',
     color: 'white',
@@ -42,13 +42,13 @@ function User(props) {
   }
   return (
     <div style={myStyle2}>
-      <h2>Name: {props.name}</h2>
-      <p>Call me baby!!!: {props.phone}</p>
+      <h2>Name: {porps.name}</h2>
+      <p>Call me baby!!!: {porps.phone}</p>
     </div>
   )
 }
 
-function MyComponent(props) {
+function MyComponent(porps) {
   const [points, setPoints] = useState(1);
   // console.log(props);
   const myStyle = {
@@ -65,8 +65,8 @@ function MyComponent(props) {
   }
   return (
     <div style={myStyle}>
-      <h1>Yo Yo mama! {props.brand}</h1>
-      <h4>Asking money price: {props.price} , I have points: {points}</h4>
+      <h1>Yo Yo mama! {porps.brand}</h1>
+      <h4>Asking money price: {porps.price} , I have points: {points}</h4>
       <button onClick={handleAddPoints}>Add Points</button>
       <p style={{ color: 'magenta', fontWeight: 'bold' }}>I can write my own component</p>
     </div>
