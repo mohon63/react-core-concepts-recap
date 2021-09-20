@@ -1,10 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   return (
     <div className="App">
+      <LoadUsers></LoadUsers>
       <MyComponent brand="MicroSoft" price="10000"></MyComponent>
       <MyComponent brand="Corola" price="122000"></MyComponent>
       <MyComponent brand="Sony" price="20000"></MyComponent>
@@ -13,9 +14,43 @@ function App() {
   );
 }
 
+function LoadUsers() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(data => setUsers(data))
+  }, [])
+  return (
+    <div>
+      <h1>Users Loaded {users.length}</h1>
+      {
+        users.map(user => <User name={user.name} phone={user.phone}></User>)
+      }
+    </div>
+  )
+}
+
+function User(props) {
+  const myStyle2 = {
+    backgroundColor: 'rgb(2 49 60)',
+    color: 'white',
+    border: '3px solid yellow',
+    borderRadius: '10px',
+    margin: '15px',
+    padding: '5px'
+  }
+  return (
+    <div style={myStyle2}>
+      <h2>Name: {props.name}</h2>
+      <p>Call me baby!!!: {props.phone}</p>
+    </div>
+  )
+}
+
 function MyComponent(props) {
   const [points, setPoints] = useState(1);
-  console.log(props);
+  // console.log(props);
   const myStyle = {
     backgroundColor: '#574180',
     color: 'white',
